@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RetrofitFruitApp</string>
+    <string name="banner_image_alt_text">Retrofit Fruit App Banner Image</string>
+    <string name="textView_fruit_item_calories_text">Calories:</string>
 </resources>

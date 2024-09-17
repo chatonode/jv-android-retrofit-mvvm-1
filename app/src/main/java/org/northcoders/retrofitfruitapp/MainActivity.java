@@ -8,10 +8,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
+import org.northcoders.retrofitfruitapp.model.Fruit;
 import org.northcoders.retrofitfruitapp.repository.FruitRepository;
+import org.northcoders.retrofitfruitapp.repository.MainActivityViewModel;
+import org.northcoders.retrofitfruitapp.ui.adapter.FruitAdapter;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private List<Fruit> fruitList;
+    private FruitAdapter fruitAdapter;
+//    private ActivityMainBinding binding;
+    private MainActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +38,29 @@ public class MainActivity extends AppCompatActivity {
 //            return insets;
 //        });
 
-        Application application = new Application();
+        // Debugging
+//        Application application = new Application();
+//        FruitRepository fruitRepository = new FruitRepository(application);
+//        fruitRepository.getMutableLiveFruitData();
 
-        FruitRepository fruitRepository = new FruitRepository(application);
+        viewModel = new ViewModelProvider(this)
+                .get(MainActivityViewModel.class);
 
-        fruitRepository.getMutableLiveFruitData();
+        getAllFruits();
+    }
+
+    private void getAllFruits() {
+        viewModel.getAllFruits().observe(this, new Observer<List<Fruit>>() {
+            @Override
+            public void onChanged(List<Fruit> fruits) {
+                fruitList = fruits;
+
+                displayFruitsInRecyclerView();
+            }
+        });
+    }
+
+    private void displayFruitsInRecyclerView() {
+//        recyclerView = binding
     }
 }

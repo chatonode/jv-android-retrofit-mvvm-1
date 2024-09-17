@@ -6,10 +6,9 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import org.northcoders.retrofitfruitapp.model.Fruit;
-import org.northcoders.retrofitfruitapp.service.ApiService;
-import org.northcoders.retrofitfruitapp.service.RetrofitInstance;
+import org.northcoders.retrofitfruitapp.data.api.ApiService;
+import org.northcoders.retrofitfruitapp.data.api.RetrofitInstance;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 

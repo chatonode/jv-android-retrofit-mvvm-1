@@ -1,4 +1,4 @@
-package org.northcoders.retrofitfruitapp.service;
+package org.northcoders.retrofitfruitapp.data.api;
 
 
 
