@@ -1,5 +1,6 @@
 package org.northcoders.retrofitfruitapp.ui.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,16 +9,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.northcoders.retrofitfruitapp.MainActivity;
 import org.northcoders.retrofitfruitapp.R;
 import org.northcoders.retrofitfruitapp.model.Fruit;
 
 import java.util.List;
 
 public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitItemViewHolder> {
-    List<Fruit> fruitItems;
+    private List<Fruit> fruitItems;
+    private Context context;
 
-    public FruitAdapter(List<Fruit> fruitItems) {
+    public FruitAdapter(Context context, List<Fruit> fruitItems) {
         this.fruitItems = fruitItems;
+        this.context = context;
     }
 
     @NonNull
@@ -35,7 +39,11 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitItemVie
     public void onBindViewHolder(@NonNull FruitItemViewHolder holder, int position) {
         Fruit fruitItem = fruitItems.get(position);
 
-        holder.fruitItemId.setText(String.valueOf(fruitItem.getId()));
+        holder.fruitItemId.setText(fruitItem.getId() >= 100
+                ? String.valueOf(fruitItem.getId())
+                : fruitItem.getId() > 10
+                ? "0" + String.valueOf(fruitItem.getId())
+                : "00" + String.valueOf(fruitItem.getId()));
         holder.fruitItemName.setText(fruitItem.getName());
         holder.fruitItemCalories.setText(String.valueOf(fruitItem.getNutritions().getCalories()));
     }

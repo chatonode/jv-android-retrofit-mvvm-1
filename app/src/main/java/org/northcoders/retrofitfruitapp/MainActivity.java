@@ -8,10 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.northcoders.retrofitfruitapp.databinding.ActivityMainBinding;
 import org.northcoders.retrofitfruitapp.model.Fruit;
 import org.northcoders.retrofitfruitapp.repository.FruitRepository;
 import org.northcoders.retrofitfruitapp.repository.MainActivityViewModel;
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Fruit> fruitList;
     private FruitAdapter fruitAdapter;
-//    private ActivityMainBinding binding;
+    private ActivityMainBinding binding;
     private MainActivityViewModel viewModel;
 
     @Override
@@ -42,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
 //        Application application = new Application();
 //        FruitRepository fruitRepository = new FruitRepository(application);
 //        fruitRepository.getMutableLiveFruitData();
+
+        binding = DataBindingUtil.setContentView(
+                this,
+                R.layout.activity_main
+        );
 
         viewModel = new ViewModelProvider(this)
                 .get(MainActivityViewModel.class);
@@ -61,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayFruitsInRecyclerView() {
-//        recyclerView = binding
+        recyclerView = binding.fruitRecyclerView;
+        fruitAdapter = new FruitAdapter(this, fruitList);
+        recyclerView.setAdapter(fruitAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        fruitAdapter.notifyDataSetChanged();
     }
 }
