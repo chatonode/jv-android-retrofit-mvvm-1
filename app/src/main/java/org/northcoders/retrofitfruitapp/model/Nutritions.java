@@ -1,8 +1,8 @@
-package org.northcoders.retrofitfruitapp.model.response.fruityvice;
+package org.northcoders.retrofitfruitapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class FlatFruitNutritionsResDTO {
+public class Nutritions {
 
     @SerializedName(value = "calories")
     private int calories;
@@ -15,9 +15,9 @@ public class FlatFruitNutritionsResDTO {
     @SerializedName(value = "protein")
     private double protein;
 
-    public FlatFruitNutritionsResDTO() {}
+    public Nutritions() {}
 
-    public FlatFruitNutritionsResDTO(int calories, double fat, double sugar, double carbohydrates, double protein) {
+    public Nutritions(int calories, double fat, double sugar, double carbohydrates, double protein) {
         this.calories = calories;
         this.fat = fat;
         this.sugar = sugar;

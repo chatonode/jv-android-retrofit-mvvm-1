@@ -1,9 +1,8 @@
-package org.northcoders.retrofitfruitapp.model.response.fruityvice;
+package org.northcoders.retrofitfruitapp.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class FlatFruitResDTO {
+public class Fruit {
 
     @SerializedName(value = "name")
     private String name;
@@ -16,12 +15,12 @@ public class FlatFruitResDTO {
     @SerializedName(value = "genus")
     private String genus;
     @SerializedName(value = "nutritions")
-    private FlatFruitNutritionsResDTO nutritions;
+    private Nutritions nutritions;
 
-    public FlatFruitResDTO() {
+    public Fruit() {
     }
 
-    public FlatFruitResDTO(String name, int id, String family, String order, String genus, FlatFruitNutritionsResDTO nutritions) {
+    public Fruit(String name, int id, String family, String order, String genus, Nutritions nutritions) {
         this.name = name;
         this.id = id;
         this.family = family;
@@ -70,11 +69,11 @@ public class FlatFruitResDTO {
         this.genus = genus;
     }
 
-    public FlatFruitNutritionsResDTO getNutritions() {
+    public Nutritions getNutritions() {
         return nutritions;
     }
 
-    public void setNutritions(FlatFruitNutritionsResDTO nutritions) {
+    public void setNutritions(Nutritions nutritions) {
         this.nutritions = nutritions;
     }
 }
