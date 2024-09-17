@@ -11,7 +11,7 @@ public class RetrofitInstance {
 
     private static Retrofit retrofit = null;
 
-    private static final String BASE_URL = "https://fruityvice.com/api/fruits/";
+    private static final String BASE_URL = "https://fruityvice.com/api/fruit/";
 
     public static ApiService getService() {
 
