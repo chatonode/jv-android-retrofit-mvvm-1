@@ -41,7 +41,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitItemVie
 
         holder.fruitItemId.setText(fruitItem.getId() >= 100
                 ? String.valueOf(fruitItem.getId())
-                : fruitItem.getId() > 10
+                : fruitItem.getId() >= 10
                 ? "0" + String.valueOf(fruitItem.getId())
                 : "00" + String.valueOf(fruitItem.getId()));
         holder.fruitItemName.setText(fruitItem.getName());
